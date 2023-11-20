@@ -1,3 +1,5 @@
+using APPMVC.NET.ExtendMethods;
+using APPMVC.NET.Services;
 using Microsoft.AspNetCore.Mvc.Razor;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,7 @@ builder.Services.AddRazorPages();
 builder.Services.Configure<RazorViewEngineOptions>(options => {
     options.ViewLocationFormats.Add("/MyView/{1}/{0}.cshtml" + RazorViewEngine.ViewExtension);
 });
+builder.Services.AddSingleton<PlanetServices>();
 
 var app = builder.Build();
 
@@ -21,6 +24,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.AddStatusCodePage();
 
 app.UseRouting();
 

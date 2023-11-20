@@ -245,6 +245,42 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\planet\\Earth.jpg",
+      "PackagePath": "staticwebassets\\planet\\Earth.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\planet\\Jupiter.jpg",
+      "PackagePath": "staticwebassets\\planet\\Jupiter.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\planet\\Mars.jpg",
+      "PackagePath": "staticwebassets\\planet\\Mars.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\planet\\Mars.png",
+      "PackagePath": "staticwebassets\\planet\\Mars.png"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\planet\\Mercury.jpg",
+      "PackagePath": "staticwebassets\\planet\\Mercury.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\planet\\Neptune.jpg",
+      "PackagePath": "staticwebassets\\planet\\Neptune.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\planet\\Saturn.jpg",
+      "PackagePath": "staticwebassets\\planet\\Saturn.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\planet\\Uranus.jpg",
+      "PackagePath": "staticwebassets\\planet\\Uranus.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\planet\\Venus.jpg",
+      "PackagePath": "staticwebassets\\planet\\Venus.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.APPMVC.NET.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
