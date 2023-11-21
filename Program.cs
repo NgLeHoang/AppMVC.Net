@@ -1,6 +1,9 @@
+using System.Configuration;
+using APPMVC.NET.Models;
 using APPMVC.NET.ExtendMethods;
 using APPMVC.NET.Services;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,10 @@ builder.Services.Configure<RazorViewEngineOptions>(options => {
     options.ViewLocationFormats.Add("/MyView/{1}/{0}.cshtml" + RazorViewEngine.ViewExtension);
 });
 builder.Services.AddSingleton<PlanetServices>();
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AppMvcConnectionString"));
+});
 
 var app = builder.Build();
 
