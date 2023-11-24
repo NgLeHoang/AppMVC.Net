@@ -249,6 +249,34 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\lib\\multiple-select\\multiple-select.css",
+      "PackagePath": "staticwebassets\\lib\\multiple-select\\multiple-select.css"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\lib\\multiple-select\\multiple-select.js",
+      "PackagePath": "staticwebassets\\lib\\multiple-select\\multiple-select.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\lib\\multiple-select\\multiple-select.min.css",
+      "PackagePath": "staticwebassets\\lib\\multiple-select\\multiple-select.min.css"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\lib\\multiple-select\\multiple-select.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\multiple-select\\multiple-select.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\lib\\multiple-select\\multiple-select.min.js",
+      "PackagePath": "staticwebassets\\lib\\multiple-select\\multiple-select.min.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\lib\\multiple-select\\multiple-select.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\multiple-select\\multiple-select.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\lib\\multiple-select\\multiple-select.png",
+      "PackagePath": "staticwebassets\\lib\\multiple-select\\multiple-select.png"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\planet\\Earth.jpg",
       "PackagePath": "staticwebassets\\planet\\Earth.jpg"
     },

@@ -1,24 +1,33 @@
-using System.Configuration;
 using APPMVC.NET.Models;
 using APPMVC.NET.ExtendMethods;
 using APPMVC.NET.Services;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using APPMVC.NET.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
 builder.Services.Configure<RazorViewEngineOptions>(options => {
     options.ViewLocationFormats.Add("/MyView/{1}/{0}.cshtml" + RazorViewEngine.ViewExtension);
 });
+
 builder.Services.AddSingleton<PlanetServices>();
+
+builder.Services.AddOptions();
+            var mailSetting = builder.Configuration.GetSection("MailSettings");
+            builder.Services.Configure<MailSettings>(mailSetting);
+            builder.Services.AddSingleton<IEmailSender, SendMailService>();
+
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppMvcConnectionString"));
 });
+
 builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
 
@@ -69,6 +78,14 @@ builder.Services.AddAuthentication()
                 googleOptions.CallbackPath = "/dang-nhap-tu-google";
             });
 
+builder.Services.AddSingleton<IdentityErrorDescriber, AppIdentityErrorDescriber>();
+
+builder.Services.AddAuthorization(options => {
+    options.AddPolicy("ViewManageMenu", builder => {
+        builder.RequireAuthenticatedUser();
+        builder.RequireRole(RoleName.Administrator);
+    });
+});
 
 var app = builder.Build();
 
