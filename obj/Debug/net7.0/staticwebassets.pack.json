@@ -5,8 +5,16 @@
       "PackagePath": "staticwebassets\\APPMVC.NET.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\images\\mail.png",
+      "PackagePath": "staticwebassets\\images\\mail.png"
     },
     {
       "Id": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\js\\site.js",

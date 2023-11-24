@@ -4,7 +4,7 @@ using APPMVC.NET.Models.Contacts;
 
 
 namespace APPMVC.NET.Models {
-        public class AppDbContext : DbContext {
+        public class AppDbContext : IdentityDbContext<AppUser> {
 
         public AppDbContext (DbContextOptions<AppDbContext> options) : base (options) 
         { 
@@ -14,13 +14,14 @@ namespace APPMVC.NET.Models {
         protected override void OnModelCreating (ModelBuilder builder) {
 
             base.OnModelCreating (builder);
-            // Bỏ tiền tố AspNet của các bảng: mặc định
-            // foreach (var entityType in builder.Model.GetEntityTypes ()) {
-            //     var tableName = entityType.GetTableName ();
-            //     if (tableName.StartsWith ("AspNet")) {
-            //         entityType.SetTableName (tableName.Substring (6));
-            //     }
-            // }
+            
+            foreach (var entityType in builder.Model.GetEntityTypes ()) {
+                var tableName = entityType.GetTableName ();
+                if (tableName.StartsWith ("AspNet")) 
+                {
+                    entityType.SetTableName (tableName.Substring (6));
+                }
+            }
         }
 
         public DbSet<ContactModel> Contacts { get; set; }

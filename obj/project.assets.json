@@ -287,6 +287,22 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.Google/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/7.0.0": {
         "type": "package",
         "compile": {
@@ -4957,6 +4973,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.xml",
         "microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
         "microsoft.aspnetcore.authentication.core.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.Google/7.0.0": {
+      "sha512": "5gAaVbwSZ0T68adSu7hcPwfThqSjujFYRiNpi1XkGxhz26rLp/66QO93dSB9zlWTSmOJZWJUdIES9YSLR/cc8A==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.google/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.xml",
+        "microsoft.aspnetcore.authentication.google.7.0.0.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.google.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/7.0.0": {
@@ -12670,6 +12701,7 @@
     "net7.0": [
       "MailKit >= 4.3.0",
       "Microsoft.AspNetCore.Authentication >= 2.2.0",
+      "Microsoft.AspNetCore.Authentication.Google >= 7.0.0",
       "Microsoft.AspNetCore.Http.Abstractions >= 2.2.0",
       "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.0",
@@ -12731,6 +12763,10 @@
           "Microsoft.AspNetCore.Authentication": {
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "Microsoft.AspNetCore.Authentication.Google": {
+            "target": "Package",
+            "version": "[7.0.0, )"
           },
           "Microsoft.AspNetCore.Http.Abstractions": {
             "target": "Package",

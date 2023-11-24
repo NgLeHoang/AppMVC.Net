@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Vd2sT/xJPz4/qWO6Ppyh67HTdk+Yp6JW8oAEpmZV1rg=",
+  "Hash": "eKFCW19ko9CRFWgAAp45gEp+D3g9UAsRwMb6+ORYuFM=",
   "Source": "APPMVC.NET",
   "BasePath": "_content/APPMVC.NET",
   "Mode": "Default",
@@ -1071,6 +1071,23 @@
       "OriginalItemSpec": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\APPMVC.NET.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\css\\site.css",
+      "SourceId": "APPMVC.NET",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\",
+      "BasePath": "_content/APPMVC.NET",
+      "RelativePath": "css/site.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
       "Identity": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\favicon.ico",
       "SourceId": "APPMVC.NET",
       "SourceType": "Discovered",
@@ -1086,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\images\\mail.png",
+      "SourceId": "APPMVC.NET",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\",
+      "BasePath": "_content/APPMVC.NET",
+      "RelativePath": "images/mail.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\mail.png"
     },
     {
       "Identity": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\js\\site.js",
