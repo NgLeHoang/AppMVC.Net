@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1y4ryF9/mVHn+u6uYm96b56/i3Sf9407GPrfBZ8P1Wo=",
+  "Hash": "Vd2sT/xJPz4/qWO6Ppyh67HTdk+Yp6JW8oAEpmZV1rg=",
   "Source": "APPMVC.NET",
   "BasePath": "_content/APPMVC.NET",
   "Mode": "Default",
@@ -1069,23 +1069,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\APPMVC.NET.bundle.scp.css"
-    },
-    {
-      "Identity": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\css\\site.css",
-      "SourceId": "APPMVC.NET",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\",
-      "BasePath": "_content/APPMVC.NET",
-      "RelativePath": "css/site.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
       "Identity": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\wwwroot\\favicon.ico",

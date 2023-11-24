@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using APPMVC.NET.Models.Contacts;
 
 
 namespace APPMVC.NET.Models {
@@ -21,6 +22,8 @@ namespace APPMVC.NET.Models {
             //     }
             // }
         }
+
+        public DbSet<ContactModel> Contacts { get; set; }
 
     }
 
