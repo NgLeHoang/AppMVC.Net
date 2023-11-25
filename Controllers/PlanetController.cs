@@ -29,36 +29,50 @@ namespace APPMVC.NET.Controllers
             var planet = _planetService.Where(p => p.Name == Name).FirstOrDefault();
             return View("Detail", planet);
         }
+
+        [Route("[controller]-[action].html")]
         public IActionResult Mars()
         {
             var planet = _planetService.Where(p => p.Name == Name).FirstOrDefault();
             return View("Detail", planet);
         }
+
+        [Route("[controller]-[action].html")]
         public IActionResult Earth()
         {
             var planet = _planetService.Where(p => p.Name == Name).FirstOrDefault();
             return View("Detail", planet);
         }
+
+        [Route("[controller]-[action].html")]
         public IActionResult Jupiter()
         {
             var planet = _planetService.Where(p => p.Name == Name).FirstOrDefault();
             return View("Detail", planet);
         }
+
+        [Route("[controller]-[action].html")]
         public IActionResult Neptune()
         {
             var planet = _planetService.Where(p => p.Name == Name).FirstOrDefault();
             return View("Detail", planet);
         }
+
+        [Route("[controller]-[action].html")]
         public IActionResult Saturn()
         {
             var planet = _planetService.Where(p => p.Name == Name).FirstOrDefault();
             return View("Detail", planet);
         }
+
+        [Route("[controller]-[action].html")]
         public IActionResult Uranus()
         {
             var planet = _planetService.Where(p => p.Name == Name).FirstOrDefault();
             return View("Detail", planet);
         }
+
+        [Route("[controller]-[action].html")]
         public IActionResult Venus()
         {
             var planet = _planetService.Where(p => p.Name == Name).FirstOrDefault();
