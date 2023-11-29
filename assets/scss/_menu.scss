@@ -1,5 +1,5 @@
 .app-navbar {
-    background: rgba($color: #000000, $alpha: 0.6);
+    background: rgba($color: #122153, $alpha: 0.8);
     .text-dark {
         color: #b9c3ce !important;
         &:hover {
@@ -15,5 +15,29 @@
     .dropdown-toggle {
         border-color: aqua;
         color: white;
+    }
+}
+
+.categorysidebar {
+    ul, li {
+        list-style: none;
+        padding-left: 10px;
+    }
+    a {
+        text-decoration: none;
+        &:hover {
+            color: burlywood;
+        }
+        &.active {
+            color: red;
+        }
+    }
+    >ul>li>a {font-weight: bold;}
+
+    h3 {
+        text-transform: uppercase;
+        font-size: 1.3em;
+        border-bottom: 1px solid aquamarine;
+        padding-bottom: 10px;
     }
 }
