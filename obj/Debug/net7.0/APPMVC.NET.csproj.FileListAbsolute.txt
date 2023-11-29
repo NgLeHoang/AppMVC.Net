@@ -298,3 +298,4 @@ C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\obj\Debug\net7.0\r
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\obj\Debug\net7.0\APPMVC.NET.pdb
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\obj\Debug\net7.0\APPMVC.NET.genruntimeconfig.cache
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\obj\Debug\net7.0\ref\APPMVC.NET.dll
+C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\bin\Debug\net7.0\elFinder.NetCore.dll

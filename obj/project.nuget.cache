@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "0nk7giw9OVwPBqilAXL9CZhc0ptv7VYl1VhlD4i1dnLoLM2HAxToQvCy8vi3Pu4HmvX//eJ4qfbD2APwmLUYyw==",
+  "dgSpecHash": "AGzxRn7HbPN7cDs/R+3IVNXCvx7+caOt3ENi0zRR5eymCdrgidvHqvPRre3LqlEzWzLTZUZE56ODLOMP9KSnJQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ADMIN\\OneDrive\\My Computer\\Workspace\\.NET\\APPMVC.NET\\APPMVC.NET.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\elfinder.netcore\\1.3.6\\elfinder.netcore.1.3.6.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\mailkit\\4.3.0\\mailkit.4.3.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

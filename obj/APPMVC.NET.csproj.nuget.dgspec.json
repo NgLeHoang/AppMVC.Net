@@ -105,6 +105,10 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.5, )"
+            },
+            "elFinder.NetCore": {
+              "target": "Package",
+              "version": "[1.3.6, )"
             }
           },
           "imports": [

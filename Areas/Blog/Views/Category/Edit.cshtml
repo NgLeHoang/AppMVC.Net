@@ -45,3 +45,9 @@
 <div>
     <a asp-action="Index">Quay lại danh sách</a>
 </div>
+
+@{
+    var summernote = new APPMVC.NET.Models.Summernote("#Description");
+}
+
+<partial name="_Summernote" model="summernote"/>
