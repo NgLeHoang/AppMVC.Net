@@ -8,10 +8,10 @@
     Category? category = ViewBag.category as Category;
     ViewData["Title"] = Model.Title;
 
-    @* IQueryable<Post>? otherPosts = ViewBag.otherPosts as IQueryable<Post>; *@
+    IQueryable<Post>? otherPosts = ViewBag.otherPosts as IQueryable<Post>;
 }
 
-<nav aria-label="breadcrumb">
+@* <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="~/">Home</a></li>
     @if (category != null)
@@ -23,12 +23,12 @@
                 <a asp-action="Index" asp-route-categoryslug="@list.Slug">@list.Title</a>
             </li>
         }
-         <li class="breadcrumb-item">
-            <a asp-action="Index" asp-route-categoryslug="@category.Slug">@category.Title</a>
-        </li>
+            <li class="breadcrumb-item">
+                <a asp-action="Index" asp-route-categoryslug="@category.Slug">@category.Title</a>
+            </li>
     }
   </ol>
-</nav>
+</nav> *@
 
 <div class="detailpost">
     <h1>@Model.Title</h1>
@@ -53,7 +53,7 @@
         Level = 0,
         CategorySlug = category?.Slug
     })
-    @* <ul class="list-group">
+    <ul class="list-group">
     @foreach (var post in otherPosts)
     {
         <li class="list-group-item">
@@ -62,5 +62,5 @@
             </a>
         </li>
     }
-</ul> *@
+</ul>
 }

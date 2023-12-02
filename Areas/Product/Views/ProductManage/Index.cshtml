@@ -1,0 +1,96 @@
+@model IEnumerable<APPMVC.NET.Models.Product.ProductModel>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+    Layout = "_Layout";
+}
+
+<h1>Danh mục</h1>
+
+<partial name="_AlertMessage"/>
+
+<p>
+    <a asp-action="Create">Tạo sản phẩm mới</a>
+</p>
+
+<p>Tổng số sản phẩm: @ViewData["item"]</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorId)
+            </th>
+            <th>
+                Ngày tạo <br/>
+                Cập nhật
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Published)
+            </th>
+            <th>Chuyên mục</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @(++ViewBag.postIndex)
+            </td>
+            <td>  
+                <a title="Xem chi tiết" asp-action="Details" asp-route-id="@item.ProductID">
+                    <strong>@Html.DisplayFor(modelItem => item.Title)</strong>
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.UserName)
+            </td>
+            <td>
+                @item.DateCreated.ToShortDateString()
+                <br>
+                @item.DateUpdated.ToShortDateString()
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Published)
+            </td>
+            <td>
+                @Html.Raw(string.Join("<br>",
+                    item.ProductCategoryProducts
+                    .Select(p => p.Category)
+                    .ToList()
+                    .Select(c => $"<i>{c.Title}</i>")))
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductID">Sửa</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductID">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@{
+    var datapaging = new PagingModel()
+    {
+        currentpage = ViewBag.pageNumber,
+        countpages  = ViewBag.totalPages,
+        generateUrl = (int? p) => Url.Action("Index", new { p = p })
+    };
+
+}
+
+<partial name="_PagingXTL" model="@datapaging"/>

@@ -21,7 +21,7 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
         }
 
         [Route("/post/{categoryslug?}")]
-        public IActionResult Index(string categoryslug, [FromQuery(Name = "p")] int currentPage, int pagesize)
+        public async Task<IActionResult> Index(string categoryslug, [FromQuery(Name = "p")] int currentPage, int pagesize)
         {
             var categories = GetCategories();
             ViewBag.categories = categories;
@@ -44,7 +44,8 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
                                 .Include(p => p.PostCategories)
                                 .ThenInclude(p => p.Category)
                                 .AsQueryable();
-            posts.OrderByDescending(p => p.DateCreated);
+
+            posts.OrderByDescending(p => p.DateUpdated);
             
             if (category != null)
             {
@@ -52,7 +53,7 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
                 category.ChildCategoryIDs(null, ids);
                 ids.Add(category.Id);
 
-                posts = posts.Where(p => p.PostCategories.Where(pc => ids.Contains(pc.CategoryID)).Any());
+                posts = posts.Where(p => p.PostCategories.Any(pc => ids.Contains(pc.CategoryID)));
             }
 
             int totalPosts = posts.Count();
@@ -73,13 +74,14 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
             };
 
             var postInPage = posts.Skip((currentPage - 1) * pagesize)
-                                  .Take(pagesize);
+                                  .Take(pagesize)
+                                  .OrderByDescending(p => p.DateUpdated);
 
             ViewBag.pagingModel = pagingModel;
             ViewBag.totalPosts = totalPosts;
 
             ViewBag.category = category;
-            return View(postInPage.ToList());
+            return View(await postInPage.ToListAsync());
         }
 
         [Route("/post/{postslug}.html")]
@@ -101,12 +103,13 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
             Category? category = post.PostCategories?.FirstOrDefault()?.Category;
             ViewBag.category = category;
 
-            // var otherPosts = _context.Posts.Where(p => p.PostCategories.Any(c => c.Category.Id == category.Id))
-            //                                 .Where(p => p.PostID != post.PostID)
-            //                                 .OrderByDescending(p => p.DateUpdated)
-            //                                 .Take(5);
-            // ViewBag.otherPosts = otherPosts;
+            var otherPosts = _context.Posts.Where(p => p.PostCategories.Any(c => c.Category.Id == category.Id))
+                                            .Where(p => p.PostID != post.PostID)
+                                            .OrderByDescending(p => p.DateUpdated)
+                                            .Take(5);
+            ViewBag.otherPosts = otherPosts;
             return View(post);
+            //return Content("FIX BUG");
         }
 
         private List<Category> GetCategories() 

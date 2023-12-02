@@ -17,6 +17,7 @@ C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\bin\Debug\net7.0\A
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\bin\Debug\net7.0\elFinder.NetCore.dll
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\bin\Debug\net7.0\Humanizer.dll
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\bin\Debug\net7.0\MailKit.dll
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\bin\Debug\net7.0\MessagePack.dll
@@ -298,4 +299,3 @@ C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\obj\Debug\net7.0\r
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\obj\Debug\net7.0\APPMVC.NET.pdb
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\obj\Debug\net7.0\APPMVC.NET.genruntimeconfig.cache
 C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\obj\Debug\net7.0\ref\APPMVC.NET.dll
-C:\Users\ADMIN\OneDrive\My Computer\Workspace\.NET\APPMVC.NET\bin\Debug\net7.0\elFinder.NetCore.dll

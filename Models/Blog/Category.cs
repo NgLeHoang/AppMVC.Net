@@ -43,12 +43,9 @@ namespace APPMVC.NET.Models.Blog
 
         public void ChildCategoryIDs(ICollection<Category>? childcates, List<int> lists)
         {
-            if (childcates == null)
-            {
-                childcates = CategoryChildren;
-            }
+            childcates ??= CategoryChildren;
 
-            foreach(Category category in childcates)
+            foreach (Category category in childcates)
             {
                 lists.Add(category.Id);
                 ChildCategoryIDs(category.CategoryChildren, lists);
@@ -57,15 +54,16 @@ namespace APPMVC.NET.Models.Blog
 
         public List<Category> ListParents()
         {
-            List<Category> listCategory = new();
+            List<Category> li = new();
             var parent = ParentCategory;
             while (parent != null)
             {
-                listCategory.Add(parent);
+                li.Add(parent);
                 parent = parent.ParentCategory;
             }
-            listCategory.Reverse();
-            return listCategory;
+
+            li.Reverse();
+            return li;
         }
     }
 }
