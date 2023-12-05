@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using APPMVC.NET.Data;
 using System.Net.NetworkInformation;
 using Microsoft.Extensions.FileProviders;
+using Org.BouncyCastle.Asn1.Cms;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,12 +15,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+// Add services to work with session
+builder.Services.AddDistributedMemoryCache(); // Register services save cache to the container
+builder.Services.AddSession(configure => {
+    configure.Cookie.Name = "appmvc"; // Name of session - use at Browser (Cookie)
+    configure.IdleTimeout = new TimeSpan(0, 30, 0); // Time alive of Session
+});
+
 builder.Services.Configure<RazorViewEngineOptions>(options => {
     options.ViewLocationFormats.Add("/MyView/{1}/{0}.cshtml" + RazorViewEngine.ViewExtension);
 });
 
+// Add services to display planet
 builder.Services.AddSingleton<PlanetServices>();
 
+// Add services to work with Mail
 builder.Services.AddOptions();
             var mailSetting = builder.Configuration.GetSection("MailSettings");
             builder.Services.Configure<MailSettings>(mailSetting);
@@ -30,6 +40,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppMvcConnectionString"));
 });
 
+// Add services identity
 builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
 
@@ -70,13 +81,13 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddAuthentication()
             .AddGoogle(googleOptions =>
             {
-                // Đọc thông tin Authentication:Google từ appsettings.json
+                // Read information of Authentication:Google from appsettings.json
                 var googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
 
-                // Thiết lập ClientID và ClientSecret để truy cập API google
+                // Setting ClientID and ClientSecret for access API google
                 googleOptions.ClientId = googleAuthNSection["ClientId"];
                 googleOptions.ClientSecret = googleAuthNSection["ClientSecret"];
-                // Cấu hình Url callback lại từ Google (không thiết lập thì mặc định là /signin-google)
+                // Configure Url callback from Google 
                 googleOptions.CallbackPath = "/dang-nhap-tu-google";
             });
 
@@ -88,6 +99,9 @@ builder.Services.AddAuthorization(options => {
         builder.RequireRole(RoleName.Administrator);
     });
 });
+
+// Add services work with cart
+builder.Services.AddTransient<CartService>();
 
 var app = builder.Build();
 
@@ -108,6 +122,8 @@ app.UseStaticFiles(new StaticFileOptions(){
     ),
     RequestPath = "/contents"
 });
+
+app.UseSession();
 
 app.AddStatusCodePage();
 

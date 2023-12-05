@@ -1,0 +1,84 @@
+@model List<ProductModel>
+
+@using APPMVC.NET.Components
+
+@{
+    List<CategoryProduct>? categories = ViewBag.categories as List<CategoryProduct>;
+    CategoryProduct? category = ViewBag.category as CategoryProduct;
+    ViewData["Title"] = (category != null) ? category.Title :
+    "Tất cả sản phẩm";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/">Home</a></li>
+        @if (category != null)
+        {
+            var lists = category.ListParents();
+            foreach (var list in lists)
+            {
+                <li class="breadcrumb-item">
+                    <a asp-action="Index" asp-route-categoryslug="@list.Slug">@list.Title</a>
+                </li>
+            }
+        }
+    </ol>
+</nav>
+
+<h1>@ViewData["Title"]</h1>
+@if (category != null)
+{
+    <p>@category?.Description</p>
+}
+else
+{
+    <p>Toàn bộ sản phẩm trong các danh mục...</p>
+}
+
+<hr>
+
+<div class="d-flex flex-wrap just-content-between">
+    @foreach (var product in Model)
+    {
+        var sourceImage = "/contents/noimage.jpg";
+        if (product.Photos.Any())
+        {
+            sourceImage = $"/contents/Products/{product.Photos.FirstOrDefault()?.FileName}";
+        }
+        <div class="card mb-2" style="width: 18rem;">
+            <img src="@sourceImage" class="card-img-top" alt="noimage">
+            <div class="card-body">
+                <h5 class="card-title">@product.Title</h5>
+                <p class="card-text">
+                    @product.Description
+                </p>
+                <p>
+                    <strong class="text-danger">@product.ProductCategoryProducts?.FirstOrDefault()?.Category.Title</strong>
+                </p>
+                <p>
+                    Giá:<strong>@product.Price</strong>
+                </p>
+                
+            </div>
+            <div class="card-body d-flex justify-content-between">
+                <a class="card-link" asp-controller="ViewProduct" asp-action="Details" asp-route-productslug="@product.Slug">
+                    Chi tiết
+                </a>
+                <a asp-action="AddToCart" asp-route-productid="@product.ProductID" class="btn btn-primary">Đặt hàng</a>
+            </div>
+        </div>
+    }
+</div>
+
+@section Sidebar
+{
+    @await Component.InvokeAsync("APPMVC.NET.Components.CategoryProductSidebar",
+        new CategoryProductSidebar.CategoryProductSidebarData()
+{
+    Categories = categories,
+    Level = 0,
+    CategorySlug = ViewBag.CategorySlug
+})
+}
+
+<partial name="_PagingXTL" model="@ViewBag.pagingModel" />
