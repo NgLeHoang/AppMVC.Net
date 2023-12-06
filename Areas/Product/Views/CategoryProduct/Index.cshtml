@@ -1,11 +1,11 @@
 @model IEnumerable<APPMVC.NET.Models.Product.CategoryProduct>
+@using APPMVC.NET.Menu
+@inject AdminSidebarService _AdminSidebarService;
 
 @{
     ViewData["Title"] = "Danh sách các chuyên mục sản phẩm";
-    Layout = "_Layout";
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h1>@ViewData["Title"]</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-primary btn-sm">Tạo chuyên mục mới</a>
@@ -28,3 +28,12 @@
         @await Component.InvokeAsync("RowTreeCategory", new { categories = Model, level = 0})
     </tbody>
 </table>
+
+@{
+    _AdminSidebarService.SetActive("CategoryProduct", "Index", "Product");
+}
+
+@section Sidebar 
+{
+    @Html.Raw(_AdminSidebarService.RenderHtml())
+}

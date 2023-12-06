@@ -1,11 +1,11 @@
 @model IEnumerable<APPMVC.NET.Models.Blog.Post>
+@using APPMVC.NET.Menu
+@inject AdminSidebarService _AdminSidebarService;
 
 @{
     ViewData["Title"] = "Danh sách Blog";
-    Layout = "_Layout";
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h1>Danh mục</h1>
 
 <partial name="_AlertMessage"/>
 
@@ -89,3 +89,12 @@
 }
 
 <partial name="_PagingXTL" model="@datapaging"/>
+
+@{
+    _AdminSidebarService.SetActive("Post", "Index", "Blog");
+}
+
+@section Sidebar 
+{
+    @Html.Raw(_AdminSidebarService.RenderHtml())
+}

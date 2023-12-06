@@ -1,11 +1,12 @@
 @model APPMVC.NET.Models.Product.ProductModel
+@using APPMVC.NET.Menu
+@inject AdminSidebarService _AdminSidebarService;
 
 @{
     ViewData["Title"] = "Tạo sản phẩm mới";
-    Layout = "_Layout";
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Tạo sản phẩm</h1>
 <hr />
 <div class="row">
     <div class="col-md-8">
@@ -77,3 +78,12 @@
 }
 
 <partial name="_Summernote" model="summernote"/>
+
+@{
+    _AdminSidebarService.SetActive("ProductManage", "Create", "Product");
+}
+
+@section Sidebar 
+{
+    @Html.Raw(_AdminSidebarService.RenderHtml())
+}

@@ -1,8 +1,11 @@
+@using APPMVC.NET.Menu
+@inject AdminSidebarService _AdminSidebarService;
+
 @{
     ViewData["Title"] = "Xóa Database";
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
 <p class="alert alert-danger">
     Bạn có chắc chắn xóa?
 </p>
@@ -13,3 +16,12 @@
     <hr>
     <a asp-action="Index">Quản lý thông tin Database</a>
 </form>
+
+@{
+    _AdminSidebarService.SetActive("DbManage", "Index", "Database");
+}
+
+@section Sidebar 
+{
+    @Html.Raw(_AdminSidebarService.RenderHtml())
+}

@@ -1,11 +1,11 @@
 @model APPMVC.NET.Models.Product.CategoryProduct
+@using APPMVC.NET.Menu
+@inject AdminSidebarService _AdminSidebarService;
 
 @{
-    ViewData["Title"] = "Delete";
-    Layout = "_Layout";
+    ViewData["Title"] = "Xoá chuyên mục sản phẩm";
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h1>Xóa sản phẩm</h1>
 
 <h3>Có chắc chắn xóa sản phẩm?</h3>
 <div>
@@ -43,3 +43,12 @@
         <a asp-action="Index">Quay lại danh sách</a>
     </form>
 </div>
+
+@{
+    _AdminSidebarService.SetActive("CategoryProduct", "Index", "Product");
+}
+
+@section Sidebar 
+{
+    @Html.Raw(_AdminSidebarService.RenderHtml())
+}

@@ -8,7 +8,9 @@
 
     if (cart.Count > 0) {
         <div class="nav-item">
-            <a asp-route="cart">Giỏ hàng(@cart.Count)</a>
+            <a asp-route="cart">
+                <i class="fas fa-shopping-cart"></i>
+                (@cart.Count)</a>
         </div>
     }
 }

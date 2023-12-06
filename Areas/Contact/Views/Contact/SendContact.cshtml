@@ -1,7 +1,10 @@
 @model APPMVC.NET.Models.Contacts.ContactModel
+@using APPMVC.NET.Menu
+@inject AdminSidebarService _AdminSidebarService;
 
 @{
     ViewData["Title"] = "Gửi liên hệ đến APPMVC";
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 
@@ -43,3 +46,11 @@
     </div>
 </div>
 
+@{
+    _AdminSidebarService.SetActive("Contact", "Index", "Contact");
+}
+
+@section Sidebar 
+{
+    @Html.Raw(_AdminSidebarService.RenderHtml())
+}

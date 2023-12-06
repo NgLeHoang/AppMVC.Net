@@ -1,8 +1,10 @@
 @model APPMVC.NET.Models.Blog.Post
+@using APPMVC.NET.Menu
+@inject AdminSidebarService _AdminSidebarService;
 
 @{
     ViewData["Title"] = "Chi tiết bài viết";
-    Layout = "_Layout";
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div>
@@ -61,3 +63,12 @@
     <a asp-action="Edit" asp-route-id="@Model.PostID">Sửa lại</a> |
     <a asp-action="Index">Quay lại danh sách</a>
 </div>
+
+@{
+    _AdminSidebarService.SetActive("Post", "Index", "Blog");
+}
+
+@section Sidebar 
+{
+    @Html.Raw(_AdminSidebarService.RenderHtml())
+}

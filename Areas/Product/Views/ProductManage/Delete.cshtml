@@ -1,11 +1,11 @@
-@model APPMVC.NET.Models.Blog.Post
+@model APPMVC.NET.Models.Product.ProductModel
+@using APPMVC.NET.Menu
+@inject AdminSidebarService _AdminSidebarService;
 
 @{
-    ViewData["Title"] = "Delete";
-    Layout = "_Layout";
+    ViewData["Title"] = "Xóa sản phẩm";
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h1>Xóa bài viết</h1>
 
 <h3>Có chắc chắn xóa?</h3>
 <div>
@@ -62,8 +62,17 @@
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="PostID" />
+        <input type="hidden" asp-for="ProductID" />
         <input type="submit" value="Xóa" class="btn btn-danger" /> |
         <a asp-action="Index">Quay lại danh sách</a>
     </form>
 </div>
+
+@{
+    _AdminSidebarService.SetActive("ProductManage", "Index", "Product");
+}
+
+@section Sidebar 
+{
+    @Html.Raw(_AdminSidebarService.RenderHtml())
+}

@@ -1,13 +1,12 @@
 @model APPMVC.NET.Models.Product.CategoryProduct
+@using APPMVC.NET.Menu
+@inject AdminSidebarService _AdminSidebarService;
 
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "_Layout";
+    ViewData["Title"] = "Chỉnh sửa chuyên mục sản phẩm";
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>Blog Category</h4>
 <hr />
 <div class="row">
     <div class="col-md-8">
@@ -51,3 +50,12 @@
 }
 
 <partial name="_Summernote" model="summernote"/>
+
+@{
+    _AdminSidebarService.SetActive("CategoryProduct", "Index", "Product");
+}
+
+@section Sidebar 
+{
+    @Html.Raw(_AdminSidebarService.RenderHtml())
+}

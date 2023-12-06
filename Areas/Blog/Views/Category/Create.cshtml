@@ -1,13 +1,13 @@
 @model APPMVC.NET.Models.Blog.Category
+@using APPMVC.NET.Menu
+@inject AdminSidebarService _AdminSidebarService;
 
 @{
-    ViewData["Title"] = "DANH MỤC";
-    Layout = "_Layout";
+    ViewData["Title"] = "CHUYÊN MỤC";
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>@ViewBag.Title</h1>
-
-<h4>Tạo danh mục Blog</h4>
+<h4>Tạo chuyên mục Blog</h4>
 <hr />
 <div class="row">
     <div class="col-md-8">
@@ -48,3 +48,12 @@
 }
 
 <partial name="_Summernote" model="summernote"/>
+
+@{
+    _AdminSidebarService.SetActive("Category", "Create", "Blog");
+}
+
+@section Sidebar 
+{
+    @Html.Raw(_AdminSidebarService.RenderHtml())
+}

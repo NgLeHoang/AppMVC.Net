@@ -8,6 +8,8 @@ using APPMVC.NET.Data;
 using System.Net.NetworkInformation;
 using Microsoft.Extensions.FileProviders;
 using Org.BouncyCastle.Asn1.Cms;
+using APPMVC.NET.Menu;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -102,6 +104,10 @@ builder.Services.AddAuthorization(options => {
 
 // Add services work with cart
 builder.Services.AddTransient<CartService>();
+
+// Add services work with admin sidebar
+builder.Services.AddTransient<IActionContextAccessor, ActionContextAccessor>();
+builder.Services.AddTransient<AdminSidebarService>();
 
 var app = builder.Build();
 
