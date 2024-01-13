@@ -1,16 +1,60 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "LH Blog";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="intro-blog">
+    <div class="logo-blog">
+        LEHOANG
+    </div>
+    <p>BLOG</p>
 </div>
-
-<textarea id="summernoteEditor"></textarea>
-
-@{
-    var summernote = new APPMVC.NET.Models.Summernote("#summernoteEditor");
-}
-
-<partial name="_Summernote" model="summernote"/>
+<div class="image-home__slide">
+    <section class="car-container active">
+        <img src="/contents/home/ganh_da_dia.JPG" class="car-image" alt="Rock" />
+        <div class="container-img">
+            <div class="car-content">
+                <h2>Gành đá đĩa<br>Phú Yên</h2>
+                <p>
+                    Thuộc về một vùng quê của Phú Yên,
+                    mang một vẻ đẹp tự nhiên của thiên nhiên mang lại. Những tầng đá được xếp chồng lên nhau,
+                    tạo nên một kỳ quan thiên nhiên độc lạ chưa từng có ở Việt Nam. Đây là một nơi tạo hóa nên sự khác
+                    biệt.
+                </p>
+                <a href="#" class="btn-explore">Khám phá</a>
+            </div>
+        </div>
+    </section>
+    <section class="car-container">
+        <img src="/contents/home/song-huong.JPG" class="car-image" alt="River Huong">
+        <div class="container-img">
+            <div class="car-content">
+                <h2>Sông Hương <br>Thừa Thiên Huế</h2>
+                <p>
+                    Một dòng sông với vẻ đẹp nên thơ,
+                    đã tạo nên những cảm hứng cho tác giả để lại biết bao tác phẩm văn học kiệt tác, 
+                    đóng góp vào nền văn học của Việt Nam.
+                    Dòng Hương giang được cho là rất đẹp khi chiêm ngưỡng nó từ nguồn và khi nó chảy quanh các chân núi, 
+                    xuyên qua các cánh rừng rậm của hệ thực vật nhiệt đới.
+                </p>
+                <a href="#" class="btn-explore">Khám phá</a>
+            </div>
+        </div>
+    </section>
+    <section class="car-container">
+        <img src="/contents/home/buu-dien-hcm.JPG" class="car-image" alt="Post Office HCM">
+        <div class="container-img">
+            <div class="car-content">
+                <h2>Bưu điện thành phố <br>Hồ Chí Minh</h2>
+                <p>
+                    As the most advanced variant of the Maybach line,
+                    the Mercedes-Maybach S680 4 Matic possesses a long list of equipment and technology.
+                    In particular, this is currently the only car model in the German brand's product line equipped with
+                    a powerful 621 horsepower V12 twin-turbo engine.
+                </p>
+                <a href="#" class="btn-explore">Khám phá</a>
+            </div>
+        </div>
+    </section>
+    <div id="prev"> < </div>
+    <div id="next"> > </div>
+</div>
+<!-- <script src="~/js/homepage.js"></script> -->

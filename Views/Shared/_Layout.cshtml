@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - APPMVC.NET</title>
+    <title>@ViewData["Title"] - LEHOANG BLOG</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/APPMVC.NET.styles.css" asp-append-version="true" />
@@ -17,26 +17,26 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 app-navbar">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">APPMVC.NET</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LEHOANG BLOG</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Blog" asp-controller="ViewPost" asp-action="Index">Blog</a>
+                        <li class="nav-item m-1">
+                            <a class="nav-link text-dark" asp-area="Blog" asp-controller="ViewPost" asp-action="Index">BLOG</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item m-1">
                             <a class="nav-link text-dark" asp-area="Product" asp-controller="ViewProduct" asp-action="Index">Sản phẩm</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li class="nav-item m-1">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Chính sách</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Planet" asp-action="Index">Planet</a>
+                        <li class="nav-item m-1">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Planet" asp-action="Index">PLANET</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item m-1">
                             <a class="nav-link text-dark" asp-area="Contact" asp-controller="Contact" asp-action="SendContact">
                                 <i class="fas fa-phone-alt"></i>
                                 Liên hệ
@@ -51,15 +51,15 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div>
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted app-footer">
-        <div class="container">
-            &copy; 2023 - APPMVC.NET - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container text-light">
+            &copy; 2023 - LEHOANG BLOG - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     @await RenderSectionAsync("Scripts", required: false)

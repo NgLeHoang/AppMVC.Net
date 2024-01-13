@@ -1,15 +1,24 @@
 .app-navbar {
-    background: rgba($color: #122153, $alpha: 0.8);
+    display: flex;
+    background: rgba($color: #e0e0e1, $alpha: 0.8);
     .text-dark {
-        color: #b9c3ce !important;
+        color: #8a8a8a !important;
         &:hover {
             color: white !important;
         }
     }
+    .container-fluid {
+        display: flex;
+        justify-content: center;
+        width: auto;
+    }
+    .nav-item {
+        margin: 0 16px;
+    }
     .navbar-brand {
-        color: aqua;
+        color: rgb(128, 128, 128);
         &:hover {
-            color: aquamarine;
+            color: rgb(178, 179, 179);
         }
     }
     .dropdown-toggle {

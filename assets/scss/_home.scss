@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Logo
+.intro-blog {
+    max-width: 100%;
+    min-height: 120px;
+    text-align: center;
+    .logo-blog {
+        margin-top: 24px;
+        font-weight: 900;
+        font-size: 64px;
+    }
+    p {
+        font-weight: 800;
+        font-size: 44px;
+        font-style: oblique;
+    }
+}
+
+// Slide Image
+.container-img {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.image-home__slide .car-container{
+    padding-top: 44px;
+    display: none;
+}
+
+.car-container.active {
+    display: block;
+}
+
+.car-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 0.9s linear forwards;
+}
+
+.car-image {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    user-select: none;
+    -webkit-user-drag: none;
+    opacity: 0;
+    animation: fadeInUp 1s linear 1s forwards;
+}
+
+.car-content {
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    padding: 60px 0 0 28px;
+}
+
+.car-content h2 {
+    padding-top: 20px;
+    margin-bottom: 30px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 60px;
+    opacity: 0;
+    animation: fadeInUp 0.5s linear 1s forwards;
+}
+
+.car-content p {
+    margin-bottom: 30px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeInUp 0.5s linear 1.2s forwards;
+}
+
+.car-content .btn-explore {
+    display: inline-block;
+    padding: 15px 40px;
+    color: #ffffff;
+    background: linear-gradient(to right, #33ecf6 0%, #1fcff6 50%, #46f2e1 100%);
+    background-size: 200%;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11);
+    transition: all 0.3s;
+    opacity: 0;
+    animation: fadeInUp 0.5s linear 1.4s forwards;
+}
+
+.car-content .btn-explore:hover {
+    background-position: right center;
+}
+
+#prev,
+#next {
+    position: absolute;
+    top: 65%;
+    transform: translateY(-50%);
+    color: #dedddd;
+    height: 50px;
+    width: 50px;
+    font-size: 40px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+#prev:hover,
+#next:hover {
+    color: #959191;
+    cursor: pointer;
+}
+
+#prev {
+    left: 1%;
+}
+
+#next {
+    right: 1%;
+}
+
+// Animation
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 100%;
+        transform: translateY(0);
+    }
+}
