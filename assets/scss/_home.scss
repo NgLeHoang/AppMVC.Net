@@ -23,22 +23,23 @@
 
 // Slide Image
 .container-img {
-    width: 100%;
+    width: 80%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.image-home__slide .car-container{
+.image-home__slide .image-container{
     padding-top: 44px;
     display: none;
 }
 
-.car-container.active {
-    display: block;
+.image-container.active {
+    display: flex;
+    justify-content: center;
 }
 
-.car-container {
+.image-container {
     position: relative;
     width: 100%;
     min-height: 100vh;
@@ -49,10 +50,10 @@
     animation: fadeIn 0.9s linear forwards;
 }
 
-.car-image {
+.home-image {
     position: absolute;
     object-fit: cover;
-    width: 100%;
+    width: 90%;
     user-select: none;
     -webkit-user-drag: none;
     opacity: 0;
@@ -128,11 +129,11 @@
 }
 
 #prev {
-    left: 1%;
+    left: 5%;
 }
 
 #next {
-    right: 1%;
+    right: 5%;
 }
 
 // Animation

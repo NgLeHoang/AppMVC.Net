@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ni0h4X+6sUd1WoXYkZZvz5RpivV6kZmmXGpKp1/h6ts=",
+  "Hash": "YhzzmD2rM6qcIoXKt5xZPkJp+FScqw8r9ma2d4IiB08=",
   "Source": "APPMVC.NET",
   "BasePath": "_content/APPMVC.NET",
   "Mode": "Default",
@@ -1290,12 +1290,12 @@
       "OriginalItemSpec": "wwwroot\\images\\mail.png"
     },
     {
-      "Identity": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\js\\home.js",
+      "Identity": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\js\\homepage.js",
       "SourceId": "APPMVC.NET",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\",
       "BasePath": "_content/APPMVC.NET",
-      "RelativePath": "js/home.js",
+      "RelativePath": "js/homepage.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1306,7 +1306,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\home.js"
+      "OriginalItemSpec": "wwwroot\\js\\homepage.js"
     },
     {
       "Identity": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\js\\sb-admin-2.min.js",
@@ -1345,6 +1345,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\js\\uploadimage.js",
+      "SourceId": "APPMVC.NET",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\",
+      "BasePath": "_content/APPMVC.NET",
+      "RelativePath": "js/uploadimage.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\uploadimage.js"
     },
     {
       "Identity": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",

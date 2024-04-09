@@ -13,6 +13,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="All" class="text-danger"></div>
 
+            <input type="hidden" asp-for="ProductID" />
             <div class="form-group">
                 <label class="control-label">Chọn danh mục</label>
                 @Html.ListBox("selectedCategories", ViewBag.categories, new {@class="w-100", id = "selectedCategories"})

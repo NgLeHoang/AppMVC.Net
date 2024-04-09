@@ -28,8 +28,8 @@
             <span class="btn btn-primary" onclick="ClickButtonUpload()">Upload hình ảnh</span>
 
             <div id="box-photo-upload" class="d-flex flex-warp photo-upload" data-id="@Model.ProductID">
-
             </div>
+            
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
                 <input asp-for="Price" class="form-control" />
@@ -73,6 +73,7 @@
 @section Scripts
 {
     <script src="~/lib/multiple-select/multiple-select.min.js"></script>
+    @* <script src="~/js/uploadimage.js"></script> *@
     <link rel="stylesheet" href="~/lib/multiple-select/multiple-select.min.css" />
     <script>
         $('#selectedCategories').multipleSelect({

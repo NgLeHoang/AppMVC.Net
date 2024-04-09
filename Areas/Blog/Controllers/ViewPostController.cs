@@ -31,8 +31,8 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
             if (!string.IsNullOrEmpty(categoryslug))
             {
                 category = _context.Categories.Where(c => c.Slug == categoryslug)
-                                   .Include(c => c.CategoryChildren)
-                                   .FirstOrDefault();
+                                              .Include(c => c.CategoryChildren)
+                                              .FirstOrDefault();
                 if (category == null)
                 {
                     return NotFound("Không thấy category");
@@ -41,12 +41,14 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
 
             var posts = _context.Posts
                                 .Include(p => p.Author)
+                                .Include(p => p.Photos)
                                 .Include(p => p.PostCategories)
                                 .ThenInclude(p => p.Category)
+                                .AsSplitQuery()
                                 .AsQueryable();
-
-            posts.OrderByDescending(p => p.DateUpdated);
             
+            posts = posts.OrderByDescending(p => p.DateUpdated);
+
             if (category != null)
             {
                 var ids = new List<int>();
@@ -55,7 +57,7 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
 
                 posts = posts.Where(p => p.PostCategories.Any(pc => ids.Contains(pc.CategoryID)));
             }
-
+            
             int totalPosts = posts.Count();
             if (pagesize <= 0) pagesize = 5;
             int countPages = (int)Math.Ceiling((double)totalPosts / pagesize);
@@ -67,7 +69,8 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
             {
                 countpages = countPages,
                 currentpage = currentPage,
-                generateUrl = (pageNumber) => Url.Action("Index", new {
+                generateUrl = (pageNumber) => Url.Action("Index", new
+                {
                     p = pageNumber,
                     pagesize
                 })
@@ -75,7 +78,9 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
 
             var postInPage = posts.Skip((currentPage - 1) * pagesize)
                                   .Take(pagesize)
-                                  .OrderByDescending(p => p.DateUpdated);
+                                  .AsSplitQuery();
+                                  
+                postInPage.OrderByDescending(p => p.DateUpdated);
 
             ViewBag.pagingModel = pagingModel;
             ViewBag.totalPosts = totalPosts;
@@ -92,6 +97,7 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
             
             var post = _context.Posts.Where(p => p.Slug == postslug)
                                     .Include(p => p.Author)
+                                    .Include(p => p.Photos)
                                     .Include(p => p.PostCategories)
                                     .ThenInclude(pc => pc.Category)
                                     .FirstOrDefault();
@@ -109,7 +115,6 @@ namespace APPMVC.NET.Areas.Admin.Blog.Controllers
                                             .Take(5);
             ViewBag.otherPosts = otherPosts;
             return View(post);
-            //return Content("FIX BUG");
         }
 
         private List<Category> GetCategories() 

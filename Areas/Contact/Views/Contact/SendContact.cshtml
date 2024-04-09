@@ -1,14 +1,12 @@
 @model APPMVC.NET.Models.Contacts.ContactModel
 @using APPMVC.NET.Menu
-@inject AdminSidebarService _AdminSidebarService;
 
 @{
-    ViewData["Title"] = "Gửi liên hệ đến APPMVC";
-    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Gửi liên hệ đến LEHOANG BLOG";
 }
 
 
-<div class="row">
+<div class="row wrapper">
     <div class="col-md-4">
         <div class="contact-firstcol p-2 h-100">
             <img src="~/images/mail.png" />
@@ -45,12 +43,3 @@
         </form>
     </div>
 </div>
-
-@{
-    _AdminSidebarService.SetActive("Contact", "Index", "Contact");
-}
-
-@section Sidebar 
-{
-    @Html.Raw(_AdminSidebarService.RenderHtml())
-}

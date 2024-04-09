@@ -25,8 +25,8 @@
       "PackagePath": "staticwebassets\\images\\mail.png"
     },
     {
-      "Id": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\js\\home.js",
-      "PackagePath": "staticwebassets\\js\\home.js"
+      "Id": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\js\\homepage.js",
+      "PackagePath": "staticwebassets\\js\\homepage.js"
     },
     {
       "Id": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\js\\sb-admin-2.min.js",
@@ -35,6 +35,10 @@
     {
       "Id": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\js\\uploadimage.js",
+      "PackagePath": "staticwebassets\\js\\uploadimage.js"
     },
     {
       "Id": "C:\\Users\\ADMIN\\AppMVC.Net\\wwwroot\\lib\\bootstrap\\LICENSE",

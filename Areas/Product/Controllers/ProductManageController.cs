@@ -17,20 +17,23 @@ using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore;
 #nullable disable warnings
 
-namespace APPMVC.NET.Areas.Product.Controllers {
+namespace APPMVC.NET.Areas.Product.Controllers
+{
     [Area("Product")]
     [Route("admin/productmanage/[action]/{id?}")]
     [Authorize(Roles = RoleName.Administrator)]
-    public class ProductManageController : Controller {
+    public class ProductManageController : Controller
+    {
         private readonly AppDbContext _context;
 
         private readonly UserManager<AppUser> _usermanager;
 
         private readonly ILogger<ProductManageController> _logger;
 
-        public ProductManageController (AppDbContext context,
+        public ProductManageController(AppDbContext context,
             UserManager<AppUser> usermanager,
-            ILogger<ProductManageController> logger) {
+            ILogger<ProductManageController> logger)
+        {
             _context = context;
             _usermanager = usermanager;
             _logger = logger;
@@ -42,21 +45,22 @@ namespace APPMVC.NET.Areas.Product.Controllers {
 
         public const int ITEMS_PER_PAGE = 5;
         // GET: Admin/Post
-        public async Task<IActionResult> Index ([FromQuery(Name = "p")]int pageNumber) {
+        public async Task<IActionResult> Index([FromQuery(Name = "p")] int pageNumber)
+        {
 
             var listPosts = _context.Products
-                .Include (p => p.Author)
-                .Include (p => p.ProductCategoryProducts)
-                .ThenInclude (c => c.Category)
-                .OrderByDescending (p => p.DateCreated);
+                .Include(p => p.Author)
+                .Include(p => p.ProductCategoryProducts)
+                .ThenInclude(c => c.Category)
+                .OrderByDescending(p => p.DateCreated);
 
-            _logger.LogInformation (pageNumber.ToString ());
+            _logger.LogInformation(pageNumber.ToString());
 
             // Lấy tổng số dòng dữ liệu
             var totalItems = await listPosts.CountAsync();
             ViewData["item"] = totalItems;
             // Tính số trang hiện thị (mỗi trang hiện thị ITEMS_PER_PAGE mục)
-            int totalPages = (int)Math.Ceiling ((double) totalItems / ITEMS_PER_PAGE);
+            int totalPages = (int)Math.Ceiling((double)totalItems / ITEMS_PER_PAGE);
 
             if (pageNumber > totalPages)
                 pageNumber = totalPages;
@@ -67,59 +71,64 @@ namespace APPMVC.NET.Areas.Product.Controllers {
 
             var posts = await listPosts
                 .Skip(ITEMS_PER_PAGE * (pageNumber - 1))
-                .Include (p => p.Author)
-                .Include (p => p.ProductCategoryProducts)
+                .Include(p => p.Author)
+                .Include(p => p.ProductCategoryProducts)
                 .Take(ITEMS_PER_PAGE)
-                .ToListAsync ();
+                .ToListAsync();
 
             // return View (await listPosts.ToListAsync());
             ViewData["pageNumber"] = pageNumber;
             ViewData["totalPages"] = totalPages;
 
-            return View (posts);
+            return View(posts);
         }
 
         // GET: Admin/Post/Details/5
-        public async Task<IActionResult> Details (int? id) {
-            if (id == null) {
-                return NotFound ();
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
             }
 
             var post = await _context.Products
-                .Include (p => p.Author)
-                .FirstOrDefaultAsync (m => m.ProductID == id);
-            if (post == null) {
-                return NotFound ();
+                .Include(p => p.Author)
+                .FirstOrDefaultAsync(m => m.ProductID == id);
+            if (post == null)
+            {
+                return NotFound();
             }
 
-            return View (post);
+            return View(post);
         }
 
         [BindProperty]
         public int[] selectedCategories { set; get; }
 
         // GET: Admin/Post/Create
-        public async Task<IActionResult> CreateAsync () {
+        public async Task<IActionResult> CreateAsync()
+        {
             // Thông tin về User tạo Post
-            var user = await _usermanager.GetUserAsync (User);
+            var user = await _usermanager.GetUserAsync(User);
             ViewData["userpost"] = $"{user.UserName}";
 
             // Danh mục chọn để đăng bài Post, tạo MultiSelectList
             var categories = await _context.CategoryProducts.ToListAsync();
-            ViewData["categories"] = new MultiSelectList (categories, "Id", "Title");
-            return View ();
+            ViewData["categories"] = new MultiSelectList(categories, "Id", "Title");
+            return View();
         }
 
-        // POST: Admin/Post/Create
+        // POST: Admin/productmanage/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create ([Bind("Title,Description,Slug,Content,Published,Price")] ProductModel product) {
-
+        public async Task<IActionResult> Create([Bind("Title,Description,Slug,Content,Published,Price")] ProductModel product)
+        {
             var user = await _usermanager.GetUserAsync(User);
             ViewData["userpost"] = $"{user.UserName}";
 
             // Phát sinh Slug theo Title
-            if (product.Slug == null) {
+            if (product.Slug == null)
+            {
                 product.Slug = AppUtilities.GenerateSlug(product.Title);
                 ModelState.SetModelValue("Slug", new ValueProviderResult(product.Slug));
 
@@ -128,17 +137,19 @@ namespace APPMVC.NET.Areas.Product.Controllers {
                 TryValidateModel(product);
             }
 
-            if (selectedCategories.Length == 0) {
-                ModelState.AddModelError (string.Empty, "Phải ít nhất một chuyên mục");
+            if (selectedCategories.Length == 0)
+            {
+                ModelState.AddModelError(string.Empty, "Phải ít nhất một chuyên mục");
             }
 
             bool SlugExisted = await _context.Products.Where(p => p.Slug == product.Slug).AnyAsync();
-            if (SlugExisted) 
+            if (SlugExisted)
             {
-                ModelState.AddModelError(nameof (product.Slug), "Slug đã có trong Database");
+                ModelState.AddModelError(nameof(product.Slug), "Slug đã có trong Database");
             }
 
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
                 product.DateCreated = product.DateUpdated = DateTime.Now;
                 product.AuthorId = user.Id;
                 _context.Add(product);
@@ -146,125 +157,138 @@ namespace APPMVC.NET.Areas.Product.Controllers {
                 // Chèn thông tin về ProductCategoryProduct của bài Post
                 if (selectedCategories != null)
                 {
-                    foreach (var selectedCategory in selectedCategories) 
+                    foreach (var selectedCategory in selectedCategories)
                     {
-                    _context.Add(new ProductCategoryProduct () { Product = product, CategoryID = selectedCategory });
+                        _context.Add(new ProductCategoryProduct() { Product = product, CategoryID = selectedCategory });
                     }
                 }
-                await _context.SaveChangesAsync ();
+                await _context.SaveChangesAsync();
 
-                StatusMessage = "Vừa tạo bài viết mới";
+                StatusMessage = "Vừa tạo sản phẩm mới";
 
-                return RedirectToAction (nameof (Index));
+                return RedirectToAction(nameof(Index));
             }
 
-            var categories = await _context.CategoryProducts.ToListAsync ();
-            ViewData["categories"] = new MultiSelectList (categories, "Id", "Title", selectedCategories);
-            
-            return View (product);
+            var categories = await _context.CategoryProducts.ToListAsync();
+            ViewData["categories"] = new MultiSelectList(categories, "Id", "Title", selectedCategories);
+
+            return View(product);
         }
 
         // GET: Admin/Post/Edit/5
-        public async Task<IActionResult> Edit (int? id) 
+        public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null) 
+            if (id == null)
             {
-                return NotFound ();
+                return NotFound();
             }
 
             // var post = await _context.Products.FindAsync (id);
-            var post = await _context.Products.Where (p => p.ProductID == id)
-                .Include (p => p.Author)
-                .Include (p => p.ProductCategoryProducts)
-                .ThenInclude (c => c.Category).FirstOrDefaultAsync ();
-            if (post == null) {
-                return NotFound ();
+            var post = await _context.Products.Where(p => p.ProductID == id)
+                .Include(p => p.Author)
+                .Include(p => p.ProductCategoryProducts)
+                .ThenInclude(c => c.Category).FirstOrDefaultAsync();
+            if (post == null)
+            {
+                return NotFound();
             }
 
             // ViewData["userpost"] = $"{post.Author.UserName} {post.Author.FullName}";
-            ViewData["datecreate"] = post.DateCreated.ToShortDateString ();
+            ViewData["datecreate"] = post.DateCreated.ToShortDateString();
 
             // Danh mục chọn
-            var selectedCates = post.ProductCategoryProducts.Select (c => c.CategoryID).ToArray ();
+            var selectedCates = post.ProductCategoryProducts.Select(c => c.CategoryID).ToArray();
             var categories = await _context.CategoryProducts.ToListAsync();
-            ViewData["categories"] = new MultiSelectList (categories, "Id", "Title", selectedCates);
+            ViewData["categories"] = new MultiSelectList(categories, "Id", "Title", selectedCates);
 
-            return View (post);
+            return View(post);
         }
 
         // POST: Admin/Post/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit (int id, [Bind("ProductID,Title,Description,Slug,Content,Published,Price")] ProductModel product) {
+        public async Task<IActionResult> Edit(int id, [Bind("ProductID,Title,Description,Slug,Content,Published,Price")] ProductModel product)
+        {
 
             // if (id != post.ProductID) {
             //     return NotFound ();
             // }
 
             // Phát sinh Slug theo Title
-            if (product.Slug == null) 
+            if (product.Slug == null)
             {
                 product.Slug = AppUtilities.GenerateSlug(product.Title);
-                ModelState.SetModelValue("Slug", new ValueProviderResult (product.Slug));
-                
+                ModelState.SetModelValue("Slug", new ValueProviderResult(product.Slug));
+
                 // Thiết lập và kiểm tra lại Model
                 ModelState.Clear();
                 TryValidateModel(product);
             }
 
-            if (selectedCategories.Length == 0) {
-                ModelState.AddModelError (string.Empty, "Phải ít nhất một chuyên mục");
-            }
-
-            if (await _context.Products.AnyAsync(p => p.Slug == product.Slug && id == product.ProductID)) 
+            if (selectedCategories.Length == 0)
             {
-                ModelState.AddModelError(nameof (product.Slug), "Slug đã có trong Database");
+                ModelState.AddModelError(string.Empty, "Phải ít nhất một chuyên mục");
             }
 
-            if (ModelState.IsValid) {
-                try {
+            if (await _context.Products.AnyAsync(p => p.Slug == product.Slug && id == product.ProductID))
+            {
+                ModelState.AddModelError(nameof(product.Slug), "Slug đã có trong Database");
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
                     // Lấy nội dung từ DB
-                var productUpdate = await _context.Products.Include(p => p.ProductCategoryProducts)
-                .FirstOrDefaultAsync(p => p.ProductID == id);
-                if (productUpdate == null) {
-                    return NotFound ();
-                }
+                    var productUpdate = await _context.Products.Include(p => p.ProductCategoryProducts)
+                    .FirstOrDefaultAsync(p => p.ProductID == id);
+                    if (productUpdate == null)
+                    {
+                        return NotFound();
+                    }
 
-                // Cập nhật nội dung mới
-                productUpdate.Title = product.Title;
-                productUpdate.Description = product.Description;
-                productUpdate.Content = product.Content;
-                productUpdate.Slug = product.Slug;
-                productUpdate.Published = product.Published;
-                productUpdate.DateUpdated = DateTime.Now;
-                productUpdate.Price = product.Price;
+                    // Cập nhật nội dung mới
+                    productUpdate.Title = product.Title;
+                    productUpdate.Description = product.Description;
+                    productUpdate.Content = product.Content;
+                    productUpdate.Slug = product.Slug;
+                    productUpdate.Published = product.Published;
+                    productUpdate.DateUpdated = DateTime.Now;
+                    productUpdate.Price = product.Price;
 
-                // Các danh mục không có trong selectedCategories
-                var listcateremove = productUpdate.ProductCategoryProducts
-                                               .Where(p => !selectedCategories.Contains(p.CategoryID))
-                                               .ToList();
-                listcateremove.ForEach(c => productUpdate.ProductCategoryProducts.Remove(c));
+                    // Các danh mục không có trong selectedCategories
+                    var listcateremove = productUpdate.ProductCategoryProducts
+                                                   .Where(p => !selectedCategories.Contains(p.CategoryID))
+                                                   .ToList();
+                    listcateremove.ForEach(c => productUpdate.ProductCategoryProducts.Remove(c));
 
-                // Các ID category chưa có trong postUpdate.ProductCategoryProducts
-                var listCateAdd = selectedCategories
-                                    .Where(
-                                        id => !productUpdate.ProductCategoryProducts.Where(c => c.CategoryID == id).Any()
-                                    ).ToList();
+                    // Các ID category chưa có trong postUpdate.ProductCategoryProducts
+                    var listCateAdd = selectedCategories
+                                        .Where(
+                                            id => !productUpdate.ProductCategoryProducts.Where(c => c.CategoryID == id).Any()
+                                        ).ToList();
 
-                listCateAdd.ForEach(id => {
-                    productUpdate.ProductCategoryProducts.Add(new ProductCategoryProduct() {
-                        ProductID = productUpdate.ProductID,
-                        CategoryID = id
+                    listCateAdd.ForEach(id =>
+                    {
+                        productUpdate.ProductCategoryProducts.Add(new ProductCategoryProduct()
+                        {
+                            ProductID = productUpdate.ProductID,
+                            CategoryID = id
+                        });
                     });
-                });
-         
+
                     _context.Update(productUpdate);
 
                     await _context.SaveChangesAsync();
-                } catch (DbUpdateConcurrencyException) {
-                    if (!PostExists (product.ProductID)) {
-                        return NotFound ();
-                    } else {
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PostExists(product.ProductID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
                         throw;
                     }
                 }
@@ -272,22 +296,24 @@ namespace APPMVC.NET.Areas.Product.Controllers {
             }
 
             var categories = await _context.CategoryProducts.ToListAsync();
-            ViewData["categories"] = new MultiSelectList (categories, "Id", "Title", selectedCategories);
-            return View (product);
+            ViewData["categories"] = new MultiSelectList(categories, "Id", "Title", selectedCategories);
+            return View(product);
         }
 
         // GET: Admin/Post/Delete/5
-        public async Task<IActionResult> Delete (int? id) 
+        public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null) {
+            if (id == null)
+            {
                 return NotFound();
             }
 
             var post = await _context.Products
-                .Include (p => p.Author)
-                .FirstOrDefaultAsync (m => m.ProductID == id);
+                .Include(p => p.Author)
+                .FirstOrDefaultAsync(m => m.ProductID == id);
 
-            if (post == null) {
+            if (post == null)
+            {
                 return NotFound();
             }
 
@@ -295,21 +321,22 @@ namespace APPMVC.NET.Areas.Product.Controllers {
         }
 
         // POST: Admin/Post/Delete/5
-        [HttpPost, ActionName ("Delete")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed (int id) 
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var post = await _context.Products.FindAsync (id);
-            _context.Products.Remove (post);
-            await _context.SaveChangesAsync ();
+            var post = await _context.Products.FindAsync(id);
+            _context.Products.Remove(post);
+            await _context.SaveChangesAsync();
 
             StatusMessage = "Bạn vừa xóa bài viết: " + post.Title;
 
-            return RedirectToAction (nameof (Index));
+            return RedirectToAction(nameof(Index));
         }
 
-        private bool PostExists (int id) {
-            return _context.Products.Any (e => e.ProductID == id);
+        private bool PostExists(int id)
+        {
+            return _context.Products.Any(e => e.ProductID == id);
         }
 
         public class UploadOneFile
@@ -357,7 +384,8 @@ namespace APPMVC.NET.Areas.Product.Controllers {
                 using var filestream = new FileStream(secondFile, FileMode.Create);
                 await file.FileUpload.CopyToAsync(filestream);
 
-                _context.Add(new ProductPhoto(){
+                _context.Add(new ProductPhoto()
+                {
                     ProductID = product.ProductID,
                     FileName = firstFile
                 });
@@ -378,20 +406,23 @@ namespace APPMVC.NET.Areas.Product.Controllers {
             if (product == null)
             {
                 return Json(
-                    new {
+                    new
+                    {
                         success = 0,
                         message = "Product not found"
                     }
                 );
             }
 
-            var listphotos = product.Photos.Select(photo => new {
+            var listphotos = product.Photos.Select(photo => new
+            {
                 id = photo.Id,
                 path = "/contents/Products/" + photo.FileName
             });
 
             return Json(
-                new {
+                new
+                {
                     success = 1,
                     photos = listphotos,
                 }
@@ -433,7 +464,8 @@ namespace APPMVC.NET.Areas.Product.Controllers {
                 using var filestream = new FileStream(secondFile, FileMode.Create);
                 await file.FileUpload.CopyToAsync(filestream);
 
-                _context.Add(new ProductPhoto(){
+                _context.Add(new ProductPhoto()
+                {
                     ProductID = product.ProductID,
                     FileName = firstFile
                 });

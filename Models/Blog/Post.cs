@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using APPMVC.NET.Models.Product;
 
 namespace APPMVC.NET.Models.Blog
 {
@@ -40,5 +41,7 @@ namespace APPMVC.NET.Models.Blog
 
         [Display(Name = "Ngày cập nhật")]
         public DateTime DateUpdated { set; get; }
+
+        public List<BlogPhoto>? Photos { get; set; }
     }
 }

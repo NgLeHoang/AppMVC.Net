@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using APPMVC.NET.Areas.Blog.Models;
 using APPMVC.NET.Data;
 using APPMVC.NET.Models;
 using APPMVC.NET.Models.Blog;
+using APPMVC.NET.Models.Product;
 using APPMVC.NET.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -34,7 +36,6 @@ namespace APPMVC.NET.Areas.Blog.Controllers {
             _logger = logger;
         }
 
-
         [TempData]
         public string StatusMessage { get; set; }
 
@@ -42,8 +43,8 @@ namespace APPMVC.NET.Areas.Blog.Controllers {
         // GET: Admin/Post
         public async Task<IActionResult> Index ([FromQuery(Name = "p")]int pageNumber) {
 
-            var listPosts = _context.Posts
-                .Include (p => p.Author)
+            var listPosts = _context?.Posts?
+                .Include (p => p.Author)?
                 .Include (p => p.PostCategories)
                 .ThenInclude (c => c.Category)
                 .OrderByDescending (p => p.DateCreated);
@@ -100,7 +101,7 @@ namespace APPMVC.NET.Areas.Blog.Controllers {
         public async Task<IActionResult> CreateAsync () {
             // Thông tin về User tạo Post
             var user = await _usermanager.GetUserAsync (User);
-            ViewData["userpost"] = $"{user.UserName}";
+            ViewData["userpost"] = $"{user?.UserName}";
 
             // Danh mục chọn để đăng bài Post, tạo MultiSelectList
             var categories = await _context.Categories.ToListAsync();
@@ -307,6 +308,144 @@ namespace APPMVC.NET.Areas.Blog.Controllers {
 
         private bool PostExists (int id) {
             return _context.Posts.Any (e => e.PostID == id);
+        }
+
+        public class UploadOneFile
+        {
+            [Required(ErrorMessage = "Phải chọn file upload")]
+            [DataType(DataType.Upload)]
+            [FileExtensions(Extensions = "png,jpg,jpeg,gif")]
+            [Display(Name = "Chọn file upload")]
+            public IFormFile FileUpload { get; set; }
+        }
+
+        [HttpGet]
+        public IActionResult UploadPhoto(int id)
+        {
+            var post = _context.Posts.Where(p => p.PostID == id)
+                                        .Include(p => p.Photos)
+                                        .FirstOrDefault();
+            if (post == null)
+            {
+                return NotFound("Không có sản phẩm");
+            }
+            ViewData["post"] = post;
+
+            return View(new UploadOneFile());
+        }
+
+        [HttpPost, ActionName("UploadPhoto")]
+        public async Task<IActionResult> UploadPhotoAsync(int id, [Bind("FileUpload")] UploadOneFile file)
+        {
+            var post = _context.Posts.Where(p => p.PostID == id)
+                                        .Include(p => p.Photos)
+                                        .FirstOrDefault();
+            if (post == null)
+            {
+                return NotFound("Không có sản phẩm");
+            }
+            ViewData["post"] = post;
+
+            if (file != null)
+            {
+                var firstFile = Path.GetFileNameWithoutExtension(Path.GetRandomFileName())
+                                + Path.GetExtension(file.FileUpload.FileName);
+                var secondFile = Path.Combine("Uploads", "Posts", firstFile);
+
+                using var filestream = new FileStream(secondFile, FileMode.Create);
+                await file.FileUpload.CopyToAsync(filestream);
+
+                _context.Add(new BlogPhoto()
+                {
+                    PostID = post.PostID,
+                    FileName = firstFile
+                });
+
+                await _context.SaveChangesAsync();
+
+            }
+
+            return View(file);
+        }
+
+        [HttpPost]
+        public IActionResult ListPhotos(int id)
+        {
+            var post = _context.Posts.Where(p => p.PostID == id)
+                                        .Include(p => p.Photos)
+                                        .FirstOrDefault();
+            if (post == null)
+            {
+                return Json(
+                    new
+                    {
+                        success = 0,
+                        message = "post not found"
+                    }
+                );
+            }
+
+            var listphotos = post.Photos.Select(photo => new
+            {
+                id = photo.Id,
+                path = "/contents/Posts/" + photo.FileName
+            });
+
+            return Json(
+                new
+                {
+                    success = 1,
+                    photos = listphotos,
+                }
+            );
+        }
+
+        [HttpPost]
+        public IActionResult DeletePhoto(int id)
+        {
+            var photo = _context.BlogPhotos.Where(p => p.Id == id).FirstOrDefault();
+            if (photo != null)
+            {
+                _context.Remove(photo);
+                _context.SaveChanges();
+
+                var fileName = "Uploads/Posts/" + photo.FileName;
+                System.IO.File.Delete(fileName);
+            }
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadPhotoApi(int id, [Bind("FileUpload")] UploadOneFile file)
+        {
+            var post = _context.Posts.Where(p => p.PostID == id)
+                                        .Include(p => p.Photos)
+                                        .FirstOrDefault();
+            if (post == null)
+            {
+                return NotFound("Không có sản phẩm");
+            }
+
+            if (file != null)
+            {
+                var firstFile = Path.GetFileNameWithoutExtension(Path.GetRandomFileName())
+                                + Path.GetExtension(file.FileUpload.FileName);
+                var secondFile = Path.Combine("Uploads", "Posts", firstFile);
+
+                using var filestream = new FileStream(secondFile, FileMode.Create);
+                await file.FileUpload.CopyToAsync(filestream);
+
+                _context.Add(new BlogPhoto()
+                {
+                    PostID = post.PostID,
+                    FileName = firstFile
+                });
+
+                await _context.SaveChangesAsync();
+
+            }
+
+            return Ok();
         }
     }
 }

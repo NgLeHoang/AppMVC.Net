@@ -28,8 +28,6 @@ C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\planet\Neptune.jpg
 C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\planet\Saturn.jpg
 C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\planet\Uranus.jpg
 C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\planet\Venus.jpg
-C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\Products\ac5qvwyz.JPG
-C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\Products\hdq0cloy.JPG
 C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\Products\uz3dpu3q.JPG
 C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\APPMVC.NET.staticwebassets.runtime.json
 C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\APPMVC.NET.exe
@@ -297,3 +295,16 @@ C:\Users\ADMIN\AppMVC.Net\obj\Debug\net8.0\APPMVC.NET.pdb
 C:\Users\ADMIN\AppMVC.Net\obj\Debug\net8.0\APPMVC.NET.genruntimeconfig.cache
 C:\Users\ADMIN\AppMVC.Net\obj\Debug\net8.0\ref\APPMVC.NET.dll
 C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\home\ganh_da_dia.jpg
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\home\buu-dien-hcm.jpg
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\home\login.png
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\home\song-huong.jpg
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\post\vuc-hom.jpg
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\.tmb\noimage_AD4A41C5DF1DF1A83FE1647A7323CB0A.jpg
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\.tmb\Products\ac5qvwyz_F8446598E30187B655D7CAC7AF1141D4.JPG
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\.tmb\Products\hdq0cloy_7B7F8B81FACCA46DB86472DA93942B2B.JPG
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\.tmb\Products\uz3dpu3q_BE4DDF782EADA0026B618E0015074858.JPG
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\Products\3f4fqmoo.jpg
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\Products\polrvdth.jpg
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\Products\cyfqtl0c.jpg
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\Posts\dif45oel.jpg
+C:\Users\ADMIN\AppMVC.Net\bin\Debug\net8.0\Uploads\Posts\tpu0afyv.jpg
